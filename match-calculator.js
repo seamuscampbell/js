@@ -18,7 +18,7 @@ function upTo250(x){
 
 function calculateMatch(num){
 	var amt = 0;
-
+	
 	if(num >= 5 && num <= 50){
 		amt = upTo50(num);
 	}
@@ -35,8 +35,15 @@ function calculateMatch(num){
 		amt += upTo150(100);
 		amt += upTo250(num);
 	}
-  else{
-    amt = num;
-  }
+	
+	else{
+		var remainder = num-250;
+		num -= 150;
+		amt += upTo50(50);
+		amt += upTo150(100);
+		amt += upTo250(250);
+		amt += remainder;
+	}
+	  
 	return amt;
 }
